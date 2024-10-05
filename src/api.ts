@@ -21,13 +21,7 @@ function getPetsPromise(): Promise<Pet[]> {
   return fetch(
     "https://petstore3.swagger.io/api/v3/pet/findByStatus?status=available"
   )
-    .then((response) => {
-      if (!response.ok) {
-        console.log("Error network");
-        return Promise.reject("Network error");
-      }
-      return response.json();
-    })
+    .then((response) => response.json())
     .then((data) => {
       console.log("Promise:", data);
       return data;
